@@ -1,156 +1,104 @@
-﻿using StocksApi.IRepositoryContracts;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Text.Json;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using StocksApi.IRepositoryContracts;
+using Polly;
+using Polly.Extensions.Http;
 
 namespace StocksApi.Repositories
 {
     public class FinnhubRepository : IFinnhubRepository
     {
-        private readonly IHttpClientFactory _httpclientFactory;
+        private readonly HttpClient _httpClient;
         private readonly ILogger<FinnhubRepository> _logger;
-        private readonly IConfiguration _config;
+        private readonly string _finnhubToken;
+        private static readonly JsonSerializerOptions _jsonOptions = new(JsonSerializerDefaults.Web);
 
-        public FinnhubRepository(IHttpClientFactory fac,IConfiguration con,ILogger<FinnhubRepository> log) 
+        private static readonly AsyncPolicy<HttpResponseMessage> _retryPolicy =
+            HttpPolicyExtensions.HandleTransientHttpError()
+                .OrResult(response => response.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
+                .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+                    (outcome, timespan, retryAttempt, context) =>
+                    {
+                        Console.WriteLine($"Retry {retryAttempt} after {timespan.TotalSeconds} seconds...");
+                    });
+
+        public FinnhubRepository(HttpClient httpClient, IConfiguration config, ILogger<FinnhubRepository> logger)
         {
-            this._config  = con;
-            this._logger = log;
-            this._httpclientFactory = fac;
-        }  
-        public async Task<Dictionary<string, object>>? GetCompanyProfile(string symbol)
-        {
-            //Log
-            _logger.LogInformation("In {ClassName}.{MethodName}", nameof(FinnhubRepository), nameof(GetCompanyProfile));
-
-            //create http client
-            HttpClient httpClient = _httpclientFactory.CreateClient();
-
-            //create http request
-            HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://finnhub.io/api/v1/stock/profile2?symbol={symbol}&token={_config["FinnhubToken"]}") //URI includes the secret token
-            };
-
-            //send request
-            HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
-
-            //read response body
-            string responseBody = await httpResponseMessage.Content.ReadAsStringAsync();
-            //_diagnosticContext.Set("Response from finnhub", responseBody);
-
-            //convert response body (from JSON into Dictionary)
-            Dictionary<string, object>? responseDictionary = JsonSerializer.Deserialize<Dictionary<string, object>>(responseBody);
-
-            if (responseDictionary == null)
-                throw new InvalidOperationException("No response from server");
-
-            if (responseDictionary.ContainsKey("error"))
-                throw new InvalidOperationException(Convert.ToString(responseDictionary["error"]));
-
-            //return response dictionary back to the caller
-            return responseDictionary;
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _finnhubToken = config["FinnhubToken"] ?? throw new ArgumentNullException("FinnhubToken is missing in configuration.");
         }
 
-        public  async Task<Dictionary<string, object>>? GetPriceQuote(string symbol)
+        public async Task<Dictionary<string, object>?> GetCompanyProfile(string symbol)
         {
-            //Log
-            _logger.LogInformation("In {ClassName}.{MethodName}", nameof(FinnhubRepository), nameof(GetPriceQuote));
+            return await GetFromApiAsync<Dictionary<string, object>>($"stock/profile2?symbol={symbol}");
+        }
 
-            //create http client
-            HttpClient httpClient = _httpclientFactory.CreateClient();
-
-            //create http request
-            HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://finnhub.io/api/v1/quote?symbol={symbol}&token={_config["FinnhubToken"]}") //URI includes the secret token
-            };
-
-            //send request
-            HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
-
-            //read response body
-            string responseBody = await httpResponseMessage.Content.ReadAsStringAsync();
-            //_diagnosticContext.Set("Response from finnhub", responseBody);
-
-            //convert response body (from JSON into Dictionary)
-            Dictionary<string, object>? responseDictionary = JsonSerializer.Deserialize<Dictionary<string, object>>(responseBody);
-
-            if (responseDictionary == null)
-                throw new InvalidOperationException("No response from server");
-
-            if (responseDictionary.ContainsKey("error"))
-                throw new InvalidOperationException(Convert.ToString(responseDictionary["error"]));
-
-            //return response dictionary back to the caller
-            return responseDictionary;
+        public async Task<Dictionary<string, object>?> GetPriceQuote(string symbol)
+        {
+            return await GetFromApiAsync<Dictionary<string, object>>($"quote?symbol={symbol}");
         }
 
         public async Task<List<Dictionary<string, string>>?> GetStocks()
         {
-            //Log
-            _logger.LogInformation("In {ClassName}.{MethodName}", nameof(FinnhubRepository), nameof(GetStocks));
-
-            //create http client
-            HttpClient httpClient = _httpclientFactory.CreateClient();
-
-            //create http request
-            HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://finnhub.io/api/v1/stock/symbol?exchange=US&token={_config["FinnhubToken"]}") //URI includes the secret token
-            };
-
-            //send request
-            HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
-
-            //read response body
-            string responseBody = await httpResponseMessage.Content.ReadAsStringAsync();
-            //_diagnosticContext.Set("Response from finnhub", responseBody);
-
-            //convert response body (from JSON into Dictionary)
-            List<Dictionary<string, string>>? responseDictionary = JsonSerializer.Deserialize<List<Dictionary<string, string>>>(responseBody);
-
-            if (responseDictionary == null)
-                throw new InvalidOperationException("No response from server");
-
-            //return response dictionary back to the caller
-            return responseDictionary;
+            return await GetFromApiAsync<List<Dictionary<string, string>>>($"stock/symbol?exchange=US");
         }
 
         public async Task<Dictionary<string, object>?> SearchStocks(string stockSymbolToSearch)
         {
-            //Log
-            _logger.LogInformation("In {ClassName}.{MethodName}", nameof(FinnhubRepository), nameof(SearchStocks));
+            return await GetFromApiAsync<Dictionary<string, object>>($"search?q={stockSymbolToSearch}");
+        }
 
-            //create http client
-            HttpClient httpClient = _httpclientFactory.CreateClient();
+        private async Task<T?> GetFromApiAsync<T>(string endpoint) where T : class
+        {
+            string requestUrl = $"https://finnhub.io/api/v1/{endpoint}&token={_finnhubToken}";
+            _logger.LogInformation("Fetching data from {Url}", requestUrl);
 
-            //create http request
-            HttpRequestMessage httpRequestMessage = new HttpRequestMessage()
+            var response = await _retryPolicy.ExecuteAsync(() => _httpClient.GetAsync(requestUrl, HttpCompletionOption.ResponseHeadersRead));
+
+            return await HandleResponse<T>(response);
+        }
+
+        private async Task<T?> HandleResponse<T>(HttpResponseMessage response) where T : class
+        {
+            string responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+            if (!response.IsSuccessStatusCode)
             {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://finnhub.io/api/v1/search?q={stockSymbolToSearch}&token={_config["FinnhubToken"]}") //URI includes the secret token
-            };
+                _logger.LogError("API Error {StatusCode}: {Response}", response.StatusCode, responseBody);
 
-            //send request
-            HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
+                // Handle 429 - Too Many Requests
+                if (response.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
+                {
+                    int retryAfterSeconds = response.Headers.RetryAfter?.Delta?.Seconds ?? 5;
+                    _logger.LogWarning("Rate limit hit. Retrying after {Seconds} seconds...", retryAfterSeconds);
+                    await Task.Delay(retryAfterSeconds * 1000);
+                    return await RetryRequest<T>(response.RequestMessage);
+                }
 
-            //read response body
-            string responseBody = await httpResponseMessage.Content.ReadAsStringAsync();
+                throw new HttpRequestException($"API Request failed: {response.StatusCode} - {responseBody}");
+            }
 
-            //convert response body (from JSON into Dictionary)
-            Dictionary<string, object>? responseDictionary = JsonSerializer.Deserialize<Dictionary<string, object>>(responseBody);
-            //_diagnosticContext.Set("Response from finnhub", responseBody);
+            return JsonSerializer.Deserialize<T>(responseBody, _jsonOptions);
+        }
 
-            if (responseDictionary == null)
-                throw new InvalidOperationException("No response from server");
+        private async Task<T?> RetryRequest<T>(HttpRequestMessage? originalRequest) where T : class
+        {
+            if (originalRequest == null)
+                return null;
 
-            if (responseDictionary.ContainsKey("error"))
-                throw new InvalidOperationException(Convert.ToString(responseDictionary["error"]));
+            _logger.LogInformation("Retrying request: {Url}", originalRequest.RequestUri);
 
-            //return response dictionary back to the caller
-            return responseDictionary;
+            var newRequest = new HttpRequestMessage(originalRequest.Method, originalRequest.RequestUri);
+            foreach (var header in originalRequest.Headers)
+            {
+                newRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+            }
+
+            var response = await _retryPolicy.ExecuteAsync(() => _httpClient.SendAsync(newRequest));
+            return await HandleResponse<T>(response);
         }
     }
 }

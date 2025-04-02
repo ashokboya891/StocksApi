@@ -44,6 +44,7 @@ namespace StockMarketSolution.Controllers
         {
             return Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
         }
+
         [HttpGet("[action]")]
         public async Task<IActionResult> GetStockTrade(string stockSymbol = "MSFT")
         {
@@ -61,7 +62,10 @@ namespace StockMarketSolution.Controllers
                 StockSymbol = companyProfile["ticker"].ToString(),
                 StockName = companyProfile["name"].ToString(),
                 Quantity = _tradingOptions.DefaultOrderQuantity ?? 0,
-                Price = Convert.ToDouble(stockQuote["c"].ToString())
+                Price = Convert.ToDouble(stockQuote["c"].ToString()),
+                Logo = Convert.ToString(companyProfile["logo"]),
+                Industry = companyProfile["finnhubIndustry"].ToString(),
+                Exchange = Convert.ToString(companyProfile["currency"])
             };
 
             return Ok(stockTrade);

@@ -1,28 +1,42 @@
 ﻿using Exceptions;
+using Microsoft.Extensions.Logging;
 using StocksApi.IRepositoryContracts;
 using StocksApi.IServiceContracts.Finnhub;
+using System.Net.Http;
+using System.Text.Json;
 
 namespace StocksApi.Services.Finnhub
 {
     public class FinnhubStockServcie : IFinnhubStockService
     {
         private readonly IFinnhubRepository _repository;
-        public FinnhubStockServcie(IFinnhubRepository repo)
+        private readonly ILogger<FinnhubStockServcie> _logger;
+
+        public FinnhubStockServcie(IFinnhubRepository repository, ILogger<FinnhubStockServcie> logger)
         {
-            this._repository = repo;
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
+
         public async Task<List<Dictionary<string, string>>?> GetStocks()
         {
             try
             {
-             List<Dictionary<string,string>>? respDict= await  _repository.GetStocks();
+                _logger.LogInformation("Fetching stock data...");
+
+                var respDict = await _repository.GetStocks() ?? new List<Dictionary<string, string>>();
+
+                _logger.LogInformation("Stock data fetched successfully.");
                 return respDict;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                FinnhubException finnhubException= new FinnhubException("unable to fetch stock data", ex);
-                throw finnhubException;
+                _logger.LogError(ex, "Error fetching stock data.");
+                throw new FinnhubException("Unable to fetch stock data", ex);
             }
         }
+
+       
     }
+
 }
