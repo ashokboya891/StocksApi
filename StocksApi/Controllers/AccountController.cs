@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using StocksApi.DatabaseContext;
 using StocksApi.DTO;
+using StocksApi.Enums;
 using StocksApi.ServiceContracts;
 using System.Security.Claims;
 
@@ -61,6 +62,8 @@ namespace StocksApi.Controllers
                 await _signInManager.SignInAsync(user, isPersistent: false);
 
                 var authenticationResponse = _jwtService.CreateJwtToken(user);
+                var roles = await _userManager.GetRolesAsync(user);
+                authenticationResponse.Roles = roles.ToList();
                 user.UserName = user.UserName;
                 user.RefreshToken = authenticationResponse.RefreshToken;
                 user.RefreshTokenExpirationDateTime = authenticationResponse.RefreshTokenExpirationDateTime;
@@ -97,6 +100,13 @@ namespace StocksApi.Controllers
             };
 
             IdentityResult result = await _userManager.CreateAsync(user, registerDTO.Password);
+            // Assign the "User" role
+            var roleExist = await _roleManager.RoleExistsAsync(UserTypeOptions.User.ToString());
+            if (!roleExist)
+            {
+                await _roleManager.CreateAsync(new ApplicationRole { Name = UserTypeOptions.User.ToString() });
+            }
+            await _userManager.AddToRoleAsync(user, UserTypeOptions.User.ToString());
 
             if (result.Succeeded)
             {
@@ -104,6 +114,8 @@ namespace StocksApi.Controllers
                 await _signInManager.SignInAsync(user, isPersistent: false);
 
                 var authenticationResponse = _jwtService.CreateJwtToken(user);
+                var roles = await _userManager.GetRolesAsync(user);
+                authenticationResponse.Roles = roles.ToList();
                 user.RefreshToken = authenticationResponse.RefreshToken;
                 user.RefreshTokenExpirationDateTime = authenticationResponse.RefreshTokenExpirationDateTime;
                 await _userManager.UpdateAsync(user);
@@ -153,7 +165,8 @@ namespace StocksApi.Controllers
             }
 
             AuthenticationResponse authenticationResponse = _jwtService.CreateJwtToken(user);
-
+            var roles = await _userManager.GetRolesAsync(user);
+            authenticationResponse.Roles = roles.ToList();
             user.RefreshToken = authenticationResponse.RefreshToken;
             user.RefreshTokenExpirationDateTime = authenticationResponse.RefreshTokenExpirationDateTime;
 

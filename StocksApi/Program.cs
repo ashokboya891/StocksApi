@@ -14,6 +14,7 @@ using StocksApi.Repositories;
 using StocksApi.ServiceContracts;
 using StocksApi.Services;
 using StocksApi.Services.Finnhub;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,11 @@ var configuration = builder.Configuration;
 // 🔹 Configure trading options
 builder.Services.Configure<TradingOptions>(configuration.GetSection("TradingOptions"));
 builder.Services.AddTransient<IJwtService, JwtService>();
+builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+    ConnectionMultiplexer.Connect("localhost:6379"));
+builder.Services.AddScoped<ICacheService, CacheService>();  // Register Cache Service
+
+
 // 🔹 Add Controllers with JSON format support
 builder.Services.AddControllers(opt =>
 {
