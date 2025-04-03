@@ -48,9 +48,13 @@ namespace StockMarketSolution.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> GetStockTrade(string stockSymbol = "MSFT")
         {
-            
-            var companyProfile = await _finnhubCompanyProfileService.GetCompanyProfile(stockSymbol);
-            var stockQuote = await _finnhubStockPriceQuoteService.GetStockPriceQuote(stockSymbol);
+            var companyProfileTask = _finnhubCompanyProfileService.GetCompanyProfile(stockSymbol);
+            var stockQuoteTask = _finnhubStockPriceQuoteService.GetStockPriceQuote(stockSymbol);
+
+            await Task.WhenAll(companyProfileTask, stockQuoteTask);
+
+            var companyProfile = await companyProfileTask;
+            var stockQuote = await stockQuoteTask;
 
             if (companyProfile == null || stockQuote == null)
             {
@@ -70,6 +74,32 @@ namespace StockMarketSolution.Controllers
 
             return Ok(stockTrade);
         }
+
+        //[HttpGet("[action]")]
+        //public async Task<IActionResult> GetStockTrade(string stockSymbol = "MSFT")
+        //{
+
+        //    var companyProfile = await _finnhubCompanyProfileService.GetCompanyProfile(stockSymbol);
+        //    var stockQuote = await _finnhubStockPriceQuoteService.GetStockPriceQuote(stockSymbol);
+
+        //    if (companyProfile == null || stockQuote == null)
+        //    {
+        //        return NotFound("Stock information not found.");
+        //    }
+
+        //    var stockTrade = new StockTrade
+        //    {
+        //        StockSymbol = companyProfile["ticker"].ToString(),
+        //        StockName = companyProfile["name"].ToString(),
+        //        Quantity = _tradingOptions.DefaultOrderQuantity ?? 0,
+        //        Price = Convert.ToDouble(stockQuote["c"].ToString()),
+        //        Logo = Convert.ToString(companyProfile["logo"]),
+        //        Industry = companyProfile["finnhubIndustry"].ToString(),
+        //        Exchange = Convert.ToString(companyProfile["currency"])
+        //    };
+
+        //    return Ok(stockTrade);
+        //}
 
         [HttpPost("BuyOrder")]
         public async Task<IActionResult> BuyOrder([FromBody] BuyOrderRequest buyOrderRequest)

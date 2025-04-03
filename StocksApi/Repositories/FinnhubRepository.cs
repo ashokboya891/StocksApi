@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using StocksApi.IRepositoryContracts;
 using Polly;
 using Polly.Extensions.Http;
+using StocksApi.IServiceContracts;
 
 namespace StocksApi.Repositories
 {
@@ -14,7 +15,7 @@ namespace StocksApi.Repositories
         private readonly ILogger<FinnhubRepository> _logger;
         private readonly string _finnhubToken;
         private static readonly JsonSerializerOptions _jsonOptions = new(JsonSerializerDefaults.Web);
-
+        private readonly ICacheService _cacheService;
         private static readonly AsyncPolicy<HttpResponseMessage> _retryPolicy =
             HttpPolicyExtensions.HandleTransientHttpError()
                 .OrResult(response => response.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
@@ -24,21 +25,59 @@ namespace StocksApi.Repositories
                         Console.WriteLine($"Retry {retryAttempt} after {timespan.TotalSeconds} seconds...");
                     });
 
-        public FinnhubRepository(HttpClient httpClient, IConfiguration config, ILogger<FinnhubRepository> logger)
+        public FinnhubRepository(HttpClient httpClient, IConfiguration config, ILogger<FinnhubRepository> logger,ICacheService ser)
         {
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _finnhubToken = config["FinnhubToken"] ?? throw new ArgumentNullException("FinnhubToken is missing in configuration.");
+            this._cacheService= ser;
         }
 
         public async Task<Dictionary<string, object>?> GetCompanyProfile(string symbol)
         {
-            return await GetFromApiAsync<Dictionary<string, object>>($"stock/profile2?symbol={symbol}");
+            string cacheKey = $"CompanyProfile:{symbol}";
+            var cachedData = await _cacheService.GetDataAsync<Dictionary<string, object>>(cacheKey);  //if user already viewed one stock info if he goes and comesback secondtime he will get dqta from cache instead
+
+            if (cachedData is not null)
+            {
+                return cachedData;
+            }
+
+            var data = await GetFromApiAsync<Dictionary<string, object>>($"stock/profile2?symbol={symbol}");
+            if (data is not null)
+            {
+                await _cacheService.SetDataAsync(cacheKey, data, TimeSpan.FromMinutes(10));
+            }
+
+            return data;
         }
 
+        //public async Task<Dictionary<string, object>?> GetCompanyProfile(string symbol)
+        //{
+        //    return await GetFromApiAsync<Dictionary<string, object>>($"stock/profile2?symbol={symbol}");
+        //}
+
+        //public async Task<Dictionary<string, object>?> GetPriceQuote(string symbol)
+        //{
+        //    return await GetFromApiAsync<Dictionary<string, object>>($"quote?symbol={symbol}");
+        //}
         public async Task<Dictionary<string, object>?> GetPriceQuote(string symbol)
         {
-            return await GetFromApiAsync<Dictionary<string, object>>($"quote?symbol={symbol}");
+            string cacheKey = $"StockPrice:{symbol}";
+            var cachedData = await _cacheService.GetDataAsync<Dictionary<string, object>>(cacheKey);  //if user already viewed one stock info if he goes and comesback secondtime he will get dqta from cache instead
+
+            if (cachedData is not null)
+            {
+                return cachedData;
+            }
+
+            var data = await GetFromApiAsync<Dictionary<string, object>>($"quote?symbol={symbol}");
+            if (data is not null)
+            {
+                await _cacheService.SetDataAsync(cacheKey, data, TimeSpan.FromMinutes(5));  // Shorter cache time for price updates
+            }
+
+            return data;
         }
 
         public async Task<List<Dictionary<string, string>>?> GetStocks()

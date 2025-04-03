@@ -14,21 +14,22 @@ using StocksApi.Repositories;
 using StocksApi.ServiceContracts;
 using StocksApi.Services;
 using StocksApi.Services.Finnhub;
+using StocksApi.Bgs;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // 🔹 Load configuration
 var configuration = builder.Configuration;
+builder.Services.AddHostedService<StockDataRefresher>();  //this service by itself when application starts running and updates stock data inside redis cahce  so we need to wait for client side
+
+builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+    ConnectionMultiplexer.Connect("localhost:6379"));
+
 
 // 🔹 Configure trading options
 builder.Services.Configure<TradingOptions>(configuration.GetSection("TradingOptions"));
 builder.Services.AddTransient<IJwtService, JwtService>();
-builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
-    ConnectionMultiplexer.Connect("localhost:6379"));
-builder.Services.AddScoped<ICacheService, CacheService>();  // Register Cache Service
-
-
 // 🔹 Add Controllers with JSON format support
 builder.Services.AddControllers(opt =>
 {
@@ -77,11 +78,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<IBuyOrderService, StockBuyOrderServices>();
 builder.Services.AddScoped<ISellOrderService, StockSellOrderServices>();
-builder.Services.AddScoped<IFinnhubRepository, FinnhubRepository>();
+builder.Services.AddTransient<IFinnhubRepository, FinnhubRepository>();
 builder.Services.AddScoped<IFinnhubCompanyProfileService, FinnhubCompanyProfileService>();
 builder.Services.AddScoped<IFinnhubSearchStockService, FinnhubSearchStockService>();
 builder.Services.AddScoped<IFinnhubStockPriceQuoteService, FinnhubStockPriceQuote>();
 builder.Services.AddScoped<IFinnhubStockService, FinnhubStockServcie>(); // 🔹 Fixed Typo
+builder.Services.AddScoped<ICacheService, CacheService>();
 builder.Services.AddHttpClient<IFinnhubRepository, FinnhubRepository>(client =>
 {
     client.Timeout = TimeSpan.FromSeconds(180); // 🔹 Increase timeout to 3 minutes
