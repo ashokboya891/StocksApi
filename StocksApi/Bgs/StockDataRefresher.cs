@@ -27,7 +27,7 @@ namespace StocksApi.Bgs
             {
                 try
                 {
-                    using (var scope = _serviceProvider.CreateScope()) // ✅ Create a scope for scoped services
+                    using (var scope = _serviceProvider.CreateScope()) // ✅ Create scoped provider
                     {
                         var finnhubRepo = scope.ServiceProvider.GetRequiredService<IFinnhubRepository>();
 
@@ -42,7 +42,7 @@ namespace StocksApi.Bgs
                     _logger.LogError($"❌ Error in StockDataRefresher: {ex.Message}");
                 }
 
-                await Task.Delay(TimeSpan.FromMinutes(10), stoppingToken); // Refresh data every 10 minutes
+                await Task.Delay(TimeSpan.FromMinutes(10), stoppingToken); // Refresh every 10 minutes
             }
         }
     }

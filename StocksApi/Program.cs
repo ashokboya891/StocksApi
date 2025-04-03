@@ -21,7 +21,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // 🔹 Load configuration
 var configuration = builder.Configuration;
-builder.Services.AddHostedService<StockDataRefresher>();  //this service by itself when application starts running and updates stock data inside redis cahce  so we need to wait for client side
+//this service by itself when application starts running and updates stock data inside redis cahce  so we need to wait for client side
+builder.Services.AddSingleton<StockDataRefresher>();  // ✅ Register as singleton
+builder.Services.AddHostedService(provider => provider.GetRequiredService<StockDataRefresher>()); // ✅ Ensure proper initialization
+
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
     ConnectionMultiplexer.Connect("localhost:6379"));
@@ -78,7 +81,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<IBuyOrderService, StockBuyOrderServices>();
 builder.Services.AddScoped<ISellOrderService, StockSellOrderServices>();
-builder.Services.AddTransient<IFinnhubRepository, FinnhubRepository>();
+builder.Services.AddScoped<IFinnhubRepository, FinnhubRepository>();
 builder.Services.AddScoped<IFinnhubCompanyProfileService, FinnhubCompanyProfileService>();
 builder.Services.AddScoped<IFinnhubSearchStockService, FinnhubSearchStockService>();
 builder.Services.AddScoped<IFinnhubStockPriceQuoteService, FinnhubStockPriceQuote>();
