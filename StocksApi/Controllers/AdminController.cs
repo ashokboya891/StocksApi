@@ -12,9 +12,9 @@ namespace StocksApi.Controllers
     public class AdminController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly UserManager<ApplicationRole> _roleManager;
+        private readonly RoleManager<ApplicationRole> _roleManager;
 
-        public AdminController(UserManager<ApplicationUser> user, UserManager<ApplicationRole> roleManager)
+        public AdminController(UserManager<ApplicationUser> user, RoleManager<ApplicationRole> roleManager)
         {
             this._userManager = user;
             _roleManager = roleManager;
@@ -42,6 +42,41 @@ namespace StocksApi.Controllers
 
             return Ok(usersWithRoles);
         }
+        [Authorize(Policy = "RequireAdminRole")]
+        [HttpPost("edit-roles/{userId}")]
+        public async Task<IActionResult> EditRoles(Guid userId, [FromBody] List<string> selectedRoles)
+        {
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user == null)
+                return NotFound("User not found.");
+
+            var currentRoles = await _userManager.GetRolesAsync(user);
+
+            // Ensure selected roles exist
+            foreach (var role in selectedRoles)
+            {
+                if (!await _roleManager.RoleExistsAsync(role))
+                {
+                    await _roleManager.CreateAsync(new ApplicationRole { Name = role });
+                }
+            }
+
+            // Add new roles that are not already assigned
+            var rolesToAdd = selectedRoles.Except(currentRoles);
+            var addResult = await _userManager.AddToRolesAsync(user, rolesToAdd);
+            if (!addResult.Succeeded)
+                return BadRequest("Failed to add roles.");
+
+            // Remove roles that are not selected anymore
+            var rolesToRemove = currentRoles.Except(selectedRoles);
+            var removeResult = await _userManager.RemoveFromRolesAsync(user, rolesToRemove);
+            if (!removeResult.Succeeded)
+                return BadRequest("Failed to remove roles.");
+
+            var updatedRoles = await _userManager.GetRolesAsync(user);
+            return Ok(new { user.Id, user.UserName, UpdatedRoles = updatedRoles });
+        }
+
         //[Authorize(policy: "RequireAdminRole")]
         //[HttpPost("edit-roles/{username}")]
         //public async Task<IActionResult> EditRoles(string username, [FromQuery] string roles)
