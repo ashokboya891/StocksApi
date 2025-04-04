@@ -61,7 +61,7 @@ namespace StocksApi.Controllers
                 //sign-in
                 await _signInManager.SignInAsync(user, isPersistent: false);
 
-                var authenticationResponse = _jwtService.CreateJwtToken(user);
+                var authenticationResponse =await _jwtService.CreateJwtToken(user);
                 var roles = await _userManager.GetRolesAsync(user);
                 authenticationResponse.Roles = roles.ToList();
                 user.UserName = user.UserName;
@@ -113,7 +113,7 @@ namespace StocksApi.Controllers
                 //sign-in
                 await _signInManager.SignInAsync(user, isPersistent: false);
 
-                var authenticationResponse = _jwtService.CreateJwtToken(user);
+                var authenticationResponse =await _jwtService.CreateJwtToken(user);
                 var roles = await _userManager.GetRolesAsync(user);
                 authenticationResponse.Roles = roles.ToList();
                 user.RefreshToken = authenticationResponse.RefreshToken;
@@ -164,7 +164,7 @@ namespace StocksApi.Controllers
                 return BadRequest("Invalid refresh token");
             }
 
-            AuthenticationResponse authenticationResponse = _jwtService.CreateJwtToken(user);
+            AuthenticationResponse authenticationResponse =await  _jwtService.CreateJwtToken(user);
             var roles = await _userManager.GetRolesAsync(user);
             authenticationResponse.Roles = roles.ToList();
             user.RefreshToken = authenticationResponse.RefreshToken;

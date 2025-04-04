@@ -8,6 +8,6 @@
         public DateTime Expire { set; get; }
         public string? RefreshToken { set; get; } = string.Empty;
         public DateTime RefreshTokenExpirationDateTime { get; set; }
-        public List<string> Roles { get; set; } = new List<string>();
+        public List<string> Roles { get; set; } = new ();
     }
 }

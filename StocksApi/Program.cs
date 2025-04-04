@@ -73,6 +73,13 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+builder.Services.AddAuthorization(opt =>
+{
+    opt.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+    opt.AddPolicy("ModeratePhotoRole", policy => policy.RequireRole("Admin", "User"));
+
+});
+
 // 🔹 Add Database Context
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
