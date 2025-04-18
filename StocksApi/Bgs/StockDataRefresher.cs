@@ -12,6 +12,8 @@ namespace StocksApi.Bgs
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly ILogger<StockDataRefresher> _logger;
+        // docker run -d --name redis-global -p 6379:6379 redis:latest This way, Redis runs once — in the background — and all your projects can use it via localhost:6379.
+
 
         public StockDataRefresher(IServiceProvider serviceProvider, ILogger<StockDataRefresher> logger)
         {

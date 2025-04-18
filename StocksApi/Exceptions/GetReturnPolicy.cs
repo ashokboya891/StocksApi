@@ -3,7 +3,7 @@
 
 //namespace StocksApi.Exceptions
 //{
-//    public  class GetReturnPolicy:
+//    public class GetReturnPolicy 
 //    {
 //        private static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
 //        {

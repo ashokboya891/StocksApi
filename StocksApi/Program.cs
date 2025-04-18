@@ -26,8 +26,15 @@ builder.Services.AddSingleton<StockDataRefresher>();  // ✅ Register as singlet
 builder.Services.AddHostedService(provider => provider.GetRequiredService<StockDataRefresher>()); // ✅ Ensure proper initialization
 
 
+// var redisHost = builder.Configuration["RedisCache:Host"];
+// var redisPort = builder.Configuration["RedisCache:Port"];
+// var redisConnectionString = $"{redisHost}:{redisPort}";
+
+// builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+//     ConnectionMultiplexer.Connect(redisConnectionString));
+
 builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
-    ConnectionMultiplexer.Connect("localhost:6379"));
+   ConnectionMultiplexer.Connect("localhost:6379"));
 
 
 // 🔹 Configure trading options
