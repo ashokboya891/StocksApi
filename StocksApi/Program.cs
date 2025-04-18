@@ -16,8 +16,49 @@ using StocksApi.Services;
 using StocksApi.Services.Finnhub;
 using StocksApi.Bgs;
 using StackExchange.Redis;
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add rate limiter services
+// Add rate limiter services for .NET 8.0
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddFixedWindowLimiter("FixedPolicy", config =>
+    {
+        config.Window = TimeSpan.FromMinutes(2);  // ⏳ 2 minute window
+        config.PermitLimit = 5;                   // 🛑 5 requests allowed
+        config.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        config.QueueLimit = 0;
+    });
+
+    options.OnRejected = (context, token) =>
+    {
+        context.HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+        context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
+        return new ValueTask(context.HttpContext.Response.WriteAsync("⚠️ Too many requests. Please wait 2 minutes before trying again.", token));
+    };
+});
+
+//builder.Services.AddRateLimiter(options =>
+//{
+//    options.AddFixedWindowLimiter("FixedPolicy", config =>
+//    {
+//        config.Window = TimeSpan.FromSeconds(30);
+//        config.PermitLimit = 5;
+//        config.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+//        config.QueueLimit = 0;
+//    });
+
+//    options.OnRejected = (context, token) =>
+//    {
+//        context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
+//        return new ValueTask(context.HttpContext.Response.WriteAsync("⚠️ Too many requests. Slow down!", token));
+//    };
+//});
+
+Console.WriteLine("RateLimiter Policies Registered");
 
 // 🔹 Load configuration
 var configuration = builder.Configuration;
@@ -52,6 +93,7 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(opt =>
 {
     opt.Password.RequiredLength = 5;
     opt.Password.RequireNonAlphanumeric = false;
+
     opt.Password.RequireUppercase = false;
     opt.Password.RequireLowercase = true;
     opt.Password.RequireDigit = true;
@@ -130,6 +172,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+
+
 // 🔹 Configure Middleware Pipeline
 if (app.Environment.IsDevelopment())
 {
@@ -139,9 +183,17 @@ if (app.Environment.IsDevelopment())
 
 app.UseRouting();
 app.UseCors("AllowSpecificOrigins"); // 🔹 Use Named CORS Policy
+
+// Use the rate limiter middleware globally
+app.UseRateLimiter();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapGet("/stockdata", () => "📈 Stock API response")
+   .RequireRateLimiting("FixedPolicy");  // This line now correctly uses the "FixedPolicy" name
+
 
 app.Run();

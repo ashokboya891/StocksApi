@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Options;
 
 using StocksApi;
@@ -130,6 +131,8 @@ namespace StockMarketSolution.Controllers
             return Ok(response);
         }
 
+       
+        [EnableRateLimiting("FixedPolicy")] // [DisableRateLimiting] if ratelimit is applied for whole controller with this attribute we can exclude that action method 
         [HttpGet("Orders")]
         public async Task<IActionResult> GetOrders()
         {

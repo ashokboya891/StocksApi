@@ -165,7 +165,7 @@ namespace StocksApi.Services
                 PersonName = user.PersonName,
                 Expire = expiration,
                 RefreshToken = GenerateRefreshToken(),
-                RefreshTokenExpirationDateTime = DateTime.UtcNow.AddMinutes(Convert.ToInt32(_configuration["RefreshToken:EXPIRATION_MINUTES"])),
+                RefreshTokenExpirationDateTime = DateTime.Now.AddMinutes(Convert.ToInt32(_configuration["RefreshToken:EXPIRATION_MINUTES"])),
                 Roles = roles.ToList() // ✅ Return roles to frontend as well
             };
         }
