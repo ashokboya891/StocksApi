@@ -18,9 +18,14 @@ using StocksApi.Bgs;
 using StackExchange.Redis;
 using Microsoft.AspNetCore.RateLimiting;
 using System.Threading.RateLimiting;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Host.UseSerilog((HostBuilderContext context, IServiceProvider Service, LoggerConfiguration config) =>
+{
+    config.ReadFrom.Configuration(context.Configuration).ReadFrom.Services(Service);
+});
 // Add rate limiter services
 // Add rate limiter services for .NET 8.0
 builder.Services.AddRateLimiter(options =>

@@ -1,0 +1,4 @@
+{"log":"19/4/2025, 12:04:02 pm: as@gmail.com navigates to /dashboard"}
+{"log":"19/4/2025, 12:04:43 pm: as@gmail.com navigates to /stock-list"}
+{"log":"19/4/2025, 12:06:10 pm: as@gmail.com navigates to /home"}
+{"log":"19/4/2025, 12:06:26 pm: as@gmail.com navigates to /dashboard"}
