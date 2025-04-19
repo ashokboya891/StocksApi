@@ -6,6 +6,7 @@ using StocksApi.DTO;
 using StocksApi.Enums;
 using StocksApi.ServiceContracts;
 using System.Security.Claims;
+using Serilog;
 
 namespace StocksApi.Controllers
 {
@@ -43,6 +44,7 @@ namespace StocksApi.Controllers
             if (ModelState.IsValid == false)
             {
                 string errorMessage = string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+                Log.Warning("Login validation failed. Errors: {ErrorMessage}", errorMessage);
                 return Problem(errorMessage);
             }
 
@@ -68,12 +70,13 @@ namespace StocksApi.Controllers
                 user.RefreshToken = authenticationResponse.RefreshToken;
                 user.RefreshTokenExpirationDateTime = authenticationResponse.RefreshTokenExpirationDateTime;
                 await _userManager.UpdateAsync(user);
-
+                Log.Warning("Login succeeded but user record not found. Email: {Email}", loginDTO.Email);
                 return Ok(authenticationResponse);
             }
 
             else
             {
+                Log.Warning("Login failed for Email: {Email}", loginDTO.Email);
                 return Problem("Invalid email or password");
             }
 
