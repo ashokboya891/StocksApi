@@ -176,3 +176,394 @@ WHERE [Id] = @p17 AND [ConcurrencyStamp] = @p18;
 2025-04-19 14:45:36.811 +05:30 [INF] Executed action StocksApi.Controllers.AccountController.PostLogin (StocksApi) in 3588.3792ms
 2025-04-19 14:45:36.812 +05:30 [INF] Executed endpoint 'StocksApi.Controllers.AccountController.PostLogin (StocksApi)'
 2025-04-19 14:45:36.826 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7129/api/Account/login - 200 null application/json; charset=utf-8 3784.2934ms
+2025-04-19 14:53:22.084 +05:30 [INF] User profile is available. Using 'C:\Users\91891\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-19 14:53:22.162 +05:30 [INF] ⏳ StockDataRefresher service started.
+2025-04-19 14:53:30.922 +05:30 [ERR] ❌ Error in StockDataRefresher: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+2025-04-19 14:53:31.419 +05:30 [INF] Now listening on: https://localhost:7129
+2025-04-19 14:53:31.419 +05:30 [INF] Now listening on: http://localhost:5033
+2025-04-19 14:53:31.969 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-19 14:53:31.969 +05:30 [INF] Hosting environment: Development
+2025-04-19 14:53:31.969 +05:30 [INF] Content root path: C:\Users\91891\Desktop\AspnetcoreHrsha\MicroFull\StockPractise\StocksApi\StocksApi
+2025-04-19 14:53:35.033 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/swagger/index.html - null null
+2025-04-19 14:53:35.359 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/swagger/index.html - 200 null text/html;charset=utf-8 345.4362ms
+2025-04-19 14:53:35.404 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/_vs/browserLink - null null
+2025-04-19 14:53:35.406 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-19 14:53:35.436 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 51.4741ms
+2025-04-19 14:53:35.556 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/_vs/browserLink - 200 null text/javascript; charset=UTF-8 169.7166ms
+2025-04-19 14:53:35.673 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/swagger/v1/swagger.json - null null
+2025-04-19 14:53:35.721 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 47.8267ms
+2025-04-19 14:54:22.334 +05:30 [INF] User profile is available. Using 'C:\Users\91891\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-19 14:54:22.442 +05:30 [INF] ⏳ StockDataRefresher service started.
+2025-04-19 14:54:31.037 +05:30 [ERR] ❌ Error in StockDataRefresher: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+2025-04-19 14:54:31.378 +05:30 [INF] Now listening on: https://localhost:7129
+2025-04-19 14:54:31.379 +05:30 [INF] Now listening on: http://localhost:5033
+2025-04-19 14:54:31.883 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-19 14:54:31.884 +05:30 [INF] Hosting environment: Development
+2025-04-19 14:54:31.884 +05:30 [INF] Content root path: C:\Users\91891\Desktop\AspnetcoreHrsha\MicroFull\StockPractise\StocksApi\StocksApi
+2025-04-19 14:54:31.968 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7129/api/events/raw - application/vnd.serilog.clef; charset=utf-8 516
+2025-04-19 14:54:32.146 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7129/api/events/raw - 404 0 null 189.2299ms
+2025-04-19 14:54:32.150 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7129/api/events/raw, Response status code: 404
+2025-04-19 14:54:33.235 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/swagger/index.html - null null
+2025-04-19 14:54:33.524 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/swagger/index.html - 200 null text/html;charset=utf-8 287.6265ms
+2025-04-19 14:54:33.759 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-19 14:54:33.805 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/_vs/browserLink - null null
+2025-04-19 14:54:33.807 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 48.64ms
+2025-04-19 14:54:33.986 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/_vs/browserLink - 200 null text/javascript; charset=UTF-8 183.9001ms
+2025-04-19 14:54:34.152 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/swagger/v1/swagger.json - null null
+2025-04-19 14:54:34.216 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 63.9341ms
+2025-04-19 14:54:42.156 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7129/api/events/raw - application/vnd.serilog.clef; charset=utf-8 8227
+2025-04-19 14:54:42.161 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7129/api/events/raw - 404 0 null 5.296ms
+2025-04-19 14:54:42.162 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7129/api/events/raw, Response status code: 404
+2025-04-19 14:54:42.169 +05:30 [INF] Connection id "0HNBV4FUUR6U9", Request id "0HNBV4FUUR6U9:00000002": the application completed without reading the entire request body.
+2025-04-19 14:54:45.858 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/ - null null
+2025-04-19 14:54:45.870 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/ - 404 0 null 12.1482ms
+2025-04-19 14:54:45.870 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7129/, Response status code: 404
+2025-04-19 14:54:48.921 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/ - null null
+2025-04-19 14:54:48.926 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/ - 404 0 null 4.8783ms
+2025-04-19 14:54:48.926 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7129/, Response status code: 404
+2025-04-19 14:54:53.534 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/ - null null
+2025-04-19 14:54:53.542 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/ - 404 0 null 9.0705ms
+2025-04-19 14:54:53.542 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7129/, Response status code: 404
+2025-04-19 14:55:02.170 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7129/api/events/raw - application/vnd.serilog.clef; charset=utf-8 14913
+2025-04-19 14:55:02.171 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7129/api/events/raw - 404 0 null 1.7998ms
+2025-04-19 14:55:02.171 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7129/api/events/raw, Response status code: 404
+2025-04-19 14:55:02.172 +05:30 [INF] Connection id "0HNBV4FUUR6U9", Request id "0HNBV4FUUR6U9:00000003": the application completed without reading the entire request body.
+2025-04-19 14:55:42.183 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7129/api/events/raw - application/vnd.serilog.clef; charset=utf-8 16959
+2025-04-19 14:55:42.183 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7129/api/events/raw - 404 0 null 0.5284ms
+2025-04-19 14:55:42.183 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7129/api/events/raw, Response status code: 404
+2025-04-19 14:55:42.183 +05:30 [INF] Connection id "0HNBV4FUUR6U9", Request id "0HNBV4FUUR6U9:00000004": the application completed without reading the entire request body.
+2025-04-19 14:56:41.185 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/ - null null
+2025-04-19 14:56:41.236 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/ - 404 0 null 52.5781ms
+2025-04-19 14:56:41.236 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7129/, Response status code: 404
+2025-04-19 14:56:43.057 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/ - null null
+2025-04-19 14:56:43.060 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/ - 404 0 null 3.3053ms
+2025-04-19 14:56:43.060 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7129/, Response status code: 404
+2025-04-19 14:57:02.218 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7129/api/events/raw - application/vnd.serilog.clef; charset=utf-8 22100
+2025-04-19 14:57:02.218 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7129/api/events/raw - 404 0 null 0.8422ms
+2025-04-19 14:57:02.219 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7129/api/events/raw, Response status code: 404
+2025-04-19 14:57:02.219 +05:30 [INF] Connection id "0HNBV4FUUR6UO", Request id "0HNBV4FUUR6UO:00000001": the application completed without reading the entire request body.
+2025-04-19 14:58:19.973 +05:30 [INF] User profile is available. Using 'C:\Users\91891\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-19 14:58:20.033 +05:30 [INF] ⏳ StockDataRefresher service started.
+2025-04-19 14:58:28.545 +05:30 [ERR] ❌ Error in StockDataRefresher: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+2025-04-19 14:58:29.083 +05:30 [INF] Now listening on: https://localhost:7129
+2025-04-19 14:58:29.111 +05:30 [INF] Now listening on: http://localhost:5033
+2025-04-19 14:58:29.748 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7129/api/events/raw - application/vnd.serilog.clef; charset=utf-8 516
+2025-04-19 14:58:29.783 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-19 14:58:29.787 +05:30 [INF] Hosting environment: Development
+2025-04-19 14:58:29.789 +05:30 [INF] Content root path: C:\Users\91891\Desktop\AspnetcoreHrsha\MicroFull\StockPractise\StocksApi\StocksApi
+2025-04-19 14:58:29.979 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7129/api/events/raw - 404 0 null 244.0251ms
+2025-04-19 14:58:29.989 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7129/api/events/raw, Response status code: 404
+2025-04-19 14:58:31.945 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/swagger/index.html - null null
+2025-04-19 14:58:32.163 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/swagger/index.html - 200 null text/html;charset=utf-8 218.7263ms
+2025-04-19 14:58:32.332 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-19 14:58:32.337 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/_vs/browserLink - null null
+2025-04-19 14:58:32.391 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 59.6351ms
+2025-04-19 14:58:32.541 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/_vs/browserLink - 200 null text/javascript; charset=UTF-8 203.9425ms
+2025-04-19 14:58:32.659 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/swagger/v1/swagger.json - null null
+2025-04-19 14:58:32.757 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 110.0023ms
+2025-04-19 14:58:39.997 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7129/api/events/raw - application/vnd.serilog.clef; charset=utf-8 8230
+2025-04-19 14:58:40.005 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7129/api/events/raw - 404 0 null 8.0017ms
+2025-04-19 14:58:40.009 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7129/api/events/raw, Response status code: 404
+2025-04-19 14:58:40.016 +05:30 [INF] Connection id "0HNBV4I5NR3HV", Request id "0HNBV4I5NR3HV:00000002": the application completed without reading the entire request body.
+2025-04-19 14:58:47.402 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/ - null null
+2025-04-19 14:58:47.494 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/ - 404 0 null 92.3267ms
+2025-04-19 14:58:47.527 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7129/, Response status code: 404
+2025-04-19 14:59:00.024 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7129/api/events/raw - application/vnd.serilog.clef; charset=utf-8 11823
+2025-04-19 14:59:00.029 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7129/api/events/raw - 404 0 null 6.1337ms
+2025-04-19 14:59:00.035 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7129/api/events/raw, Response status code: 404
+2025-04-19 14:59:00.038 +05:30 [INF] Connection id "0HNBV4I5NR3HV", Request id "0HNBV4I5NR3HV:00000003": the application completed without reading the entire request body.
+2025-04-19 14:59:40.045 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7129/api/events/raw - application/vnd.serilog.clef; charset=utf-8 13869
+2025-04-19 14:59:40.063 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7129/api/events/raw - 404 0 null 20.3725ms
+2025-04-19 14:59:40.069 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7129/api/events/raw, Response status code: 404
+2025-04-19 14:59:40.072 +05:30 [INF] Connection id "0HNBV4I5NR3HV", Request id "0HNBV4I5NR3HV:00000004": the application completed without reading the entire request body.
+2025-04-19 15:01:00.088 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7129/api/events/raw - application/vnd.serilog.clef; charset=utf-8 15916
+2025-04-19 15:01:00.096 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7129/api/events/raw - 404 0 null 7.4798ms
+2025-04-19 15:01:00.101 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7129/api/events/raw, Response status code: 404
+2025-04-19 15:01:00.104 +05:30 [INF] Connection id "0HNBV4I5NR3I2", Request id "0HNBV4I5NR3I2:00000001": the application completed without reading the entire request body.
+2025-04-19 15:03:40.160 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:7129/api/events/raw - application/vnd.serilog.clef; charset=utf-8 17962
+2025-04-19 15:03:40.167 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:7129/api/events/raw - 404 0 null 6.8192ms
+2025-04-19 15:03:40.173 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7129/api/events/raw, Response status code: 404
+2025-04-19 15:03:40.176 +05:30 [INF] Connection id "0HNBV4I5NR3I3", Request id "0HNBV4I5NR3I3:00000001": the application completed without reading the entire request body.
+2025-04-19 15:06:31.468 +05:30 [INF] User profile is available. Using 'C:\Users\91891\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-19 15:06:31.546 +05:30 [INF] ⏳ StockDataRefresher service started.
+2025-04-19 15:06:40.079 +05:30 [ERR] ❌ Error in StockDataRefresher: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+2025-04-19 15:06:40.558 +05:30 [INF] Now listening on: https://localhost:7129
+2025-04-19 15:06:40.560 +05:30 [INF] Now listening on: http://localhost:5033
+2025-04-19 15:06:41.259 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-19 15:06:41.268 +05:30 [INF] Hosting environment: Development
+2025-04-19 15:06:41.270 +05:30 [INF] Content root path: C:\Users\91891\Desktop\AspnetcoreHrsha\MicroFull\StockPractise\StocksApi\StocksApi
+2025-04-19 15:06:44.775 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/swagger/index.html - null null
+2025-04-19 15:06:45.041 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/swagger/index.html - 200 null text/html;charset=utf-8 280.9567ms
+2025-04-19 15:06:45.081 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-19 15:06:45.088 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/_vs/browserLink - null null
+2025-04-19 15:06:45.111 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 25.61ms
+2025-04-19 15:06:45.207 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/_vs/browserLink - 200 null text/javascript; charset=UTF-8 119.2036ms
+2025-04-19 15:06:45.302 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/swagger/v1/swagger.json - null null
+2025-04-19 15:06:45.342 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 40.258ms
+2025-04-19 15:15:10.054 +05:30 [INF] User profile is available. Using 'C:\Users\91891\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-19 15:15:10.154 +05:30 [INF] ⏳ StockDataRefresher service started.
+2025-04-19 15:15:18.812 +05:30 [ERR] ❌ Error in StockDataRefresher: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+2025-04-19 15:15:19.219 +05:30 [INF] Now listening on: https://localhost:7129
+2025-04-19 15:15:19.222 +05:30 [INF] Now listening on: http://localhost:5033
+2025-04-19 15:15:19.776 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-19 15:15:19.779 +05:30 [INF] Hosting environment: Development
+2025-04-19 15:15:19.781 +05:30 [INF] Content root path: C:\Users\91891\Desktop\AspnetcoreHrsha\MicroFull\StockPractise\StocksApi\StocksApi
+2025-04-19 15:15:21.741 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/swagger/index.html - null null
+2025-04-19 15:15:21.955 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/swagger/index.html - 200 null text/html;charset=utf-8 227.5551ms
+2025-04-19 15:15:22.015 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-19 15:15:22.022 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/_vs/browserLink - null null
+2025-04-19 15:15:22.066 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 49.1339ms
+2025-04-19 15:15:22.208 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/_vs/browserLink - 200 null text/javascript; charset=UTF-8 187.6293ms
+2025-04-19 15:15:22.292 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/swagger/v1/swagger.json - null null
+2025-04-19 15:15:22.345 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 53.4045ms
+2025-04-19 15:18:52.401 +05:30 [INF] User profile is available. Using 'C:\Users\91891\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-19 15:18:52.502 +05:30 [INF] ⏳ StockDataRefresher service started.
+2025-04-19 15:19:01.079 +05:30 [ERR] ❌ Error in StockDataRefresher: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+2025-04-19 15:19:01.490 +05:30 [INF] Now listening on: https://localhost:7129
+2025-04-19 15:19:01.492 +05:30 [INF] Now listening on: http://localhost:5033
+2025-04-19 15:19:01.981 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-19 15:19:01.985 +05:30 [INF] Hosting environment: Development
+2025-04-19 15:19:01.987 +05:30 [INF] Content root path: C:\Users\91891\Desktop\AspnetcoreHrsha\MicroFull\StockPractise\StocksApi\StocksApi
+2025-04-19 15:19:05.542 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/swagger/index.html - null null
+2025-04-19 15:19:05.875 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/swagger/index.html - 200 null text/html;charset=utf-8 348.6751ms
+2025-04-19 15:19:06.125 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/_vs/browserLink - null null
+2025-04-19 15:19:06.125 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-19 15:19:06.161 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 36.1061ms
+2025-04-19 15:19:06.219 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/_vs/browserLink - 200 null text/javascript; charset=UTF-8 94.9239ms
+2025-04-19 15:19:06.286 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7129/swagger/v1/swagger.json - null null
+2025-04-19 15:19:06.316 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7129/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 30.1358ms
+2025-04-19 15:19:40.074 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7129/api/Account/login - application/json 55
+2025-04-19 15:19:40.119 +05:30 [INF] CORS policy execution failed.
+2025-04-19 15:19:40.121 +05:30 [INF] Request origin https://localhost:7129 does not have permission to access the resource.
+2025-04-19 15:19:40.201 +05:30 [INF] Executing endpoint 'StocksApi.Controllers.AccountController.PostLogin (StocksApi)'
+2025-04-19 15:19:40.226 +05:30 [INF] Route matched with {action = "PostLogin", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PostLogin(StocksApi.DTO.LoginDTO) on controller StocksApi.Controllers.AccountController (StocksApi).
+2025-04-19 15:19:42.537 +05:30 [INF] Executed DbCommand (77ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PersonName], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpirationDateTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-04-19 15:19:42.988 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-04-19 15:19:43.058 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-19 15:19:43.087 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-19 15:19:43.133 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-04-19 15:19:43.176 +05:30 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-04-19 15:19:43.205 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PersonName], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpirationDateTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-19 15:19:43.220 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-04-19 15:19:43.228 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-19 15:19:43.241 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-19 15:19:43.269 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-04-19 15:19:43.276 +05:30 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-04-19 15:19:43.292 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-19 15:19:43.377 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-19 15:19:43.390 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PersonName], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpirationDateTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-04-19 15:19:43.595 +05:30 [INF] Executed DbCommand (37ms) [Parameters=[@p17='?' (DbType = Guid), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p18='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = DateTime2), @p14='?' (Size = 4000), @p15='?' (DbType = Boolean), @p16='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PersonName] = @p9, [PhoneNumber] = @p10, [PhoneNumberConfirmed] = @p11, [RefreshToken] = @p12, [RefreshTokenExpirationDateTime] = @p13, [SecurityStamp] = @p14, [TwoFactorEnabled] = @p15, [UserName] = @p16
+OUTPUT 1
+WHERE [Id] = @p17 AND [ConcurrencyStamp] = @p18;
+2025-04-19 15:19:43.646 +05:30 [INF] Executing OkObjectResult, writing value of type 'StocksApi.DTO.AuthenticationResponse'.
+2025-04-19 15:19:43.675 +05:30 [INF] Executed action StocksApi.Controllers.AccountController.PostLogin (StocksApi) in 3439.3883ms
+2025-04-19 15:19:43.684 +05:30 [INF] Executed endpoint 'StocksApi.Controllers.AccountController.PostLogin (StocksApi)'
+2025-04-19 15:19:43.702 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7129/api/Account/login - 200 null application/json; charset=utf-8 3627.6373ms
+2025-04-19 15:20:10.567 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7129/api/Account/login - application/json 55
+2025-04-19 15:20:10.588 +05:30 [INF] CORS policy execution failed.
+2025-04-19 15:20:10.591 +05:30 [INF] Request origin https://localhost:7129 does not have permission to access the resource.
+2025-04-19 15:20:10.596 +05:30 [INF] Executing endpoint 'StocksApi.Controllers.AccountController.PostLogin (StocksApi)'
+2025-04-19 15:20:10.599 +05:30 [INF] Route matched with {action = "PostLogin", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PostLogin(StocksApi.DTO.LoginDTO) on controller StocksApi.Controllers.AccountController (StocksApi).
+2025-04-19 15:20:10.689 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PersonName], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpirationDateTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-04-19 15:20:10.788 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-04-19 15:20:10.798 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-19 15:20:10.803 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-19 15:20:10.811 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-04-19 15:20:10.818 +05:30 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-04-19 15:20:10.822 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PersonName], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpirationDateTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-19 15:20:10.829 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-04-19 15:20:10.833 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-19 15:20:10.838 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-19 15:20:10.847 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-04-19 15:20:10.852 +05:30 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-04-19 15:20:10.856 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-19 15:20:10.864 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-19 15:20:10.871 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PersonName], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpirationDateTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-04-19 15:20:10.886 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@p17='?' (DbType = Guid), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p18='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = DateTime2), @p14='?' (Size = 4000), @p15='?' (DbType = Boolean), @p16='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PersonName] = @p9, [PhoneNumber] = @p10, [PhoneNumberConfirmed] = @p11, [RefreshToken] = @p12, [RefreshTokenExpirationDateTime] = @p13, [SecurityStamp] = @p14, [TwoFactorEnabled] = @p15, [UserName] = @p16
+OUTPUT 1
+WHERE [Id] = @p17 AND [ConcurrencyStamp] = @p18;
+2025-04-19 15:20:10.894 +05:30 [INF] Executing OkObjectResult, writing value of type 'StocksApi.DTO.AuthenticationResponse'.
+2025-04-19 15:20:10.897 +05:30 [INF] Executed action StocksApi.Controllers.AccountController.PostLogin (StocksApi) in 295.067ms
+2025-04-19 15:20:10.900 +05:30 [INF] Executed endpoint 'StocksApi.Controllers.AccountController.PostLogin (StocksApi)'
+2025-04-19 15:20:10.902 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7129/api/Account/login - 200 null application/json; charset=utf-8 336.4819ms
+2025-04-19 15:20:27.760 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7129/api/Account/login - application/json 55
+2025-04-19 15:20:27.775 +05:30 [INF] CORS policy execution failed.
+2025-04-19 15:20:27.776 +05:30 [INF] Request origin https://localhost:7129 does not have permission to access the resource.
+2025-04-19 15:20:27.778 +05:30 [INF] Executing endpoint 'StocksApi.Controllers.AccountController.PostLogin (StocksApi)'
+2025-04-19 15:20:27.780 +05:30 [INF] Route matched with {action = "PostLogin", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PostLogin(StocksApi.DTO.LoginDTO) on controller StocksApi.Controllers.AccountController (StocksApi).
+2025-04-19 15:20:27.816 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PersonName], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpirationDateTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-04-19 15:20:27.902 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-04-19 15:20:27.913 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-19 15:20:27.920 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-19 15:20:27.925 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-04-19 15:20:27.929 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-19 15:20:27.934 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-04-19 15:20:27.937 +05:30 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-04-19 15:20:27.941 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PersonName], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpirationDateTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-04-19 15:20:27.945 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-04-19 15:20:27.950 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-19 15:20:27.954 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-19 15:20:27.957 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-04-19 15:20:27.961 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-04-19 15:20:27.965 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__role_Id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2025-04-19 15:20:27.968 +05:30 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-04-19 15:20:27.970 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-19 15:20:27.976 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-04-19 15:20:27.982 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PersonName], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpirationDateTime], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-04-19 15:20:27.990 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p17='?' (DbType = Guid), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p18='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = DateTime2), @p14='?' (Size = 4000), @p15='?' (DbType = Boolean), @p16='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PersonName] = @p9, [PhoneNumber] = @p10, [PhoneNumberConfirmed] = @p11, [RefreshToken] = @p12, [RefreshTokenExpirationDateTime] = @p13, [SecurityStamp] = @p14, [TwoFactorEnabled] = @p15, [UserName] = @p16
+OUTPUT 1
+WHERE [Id] = @p17 AND [ConcurrencyStamp] = @p18;
+2025-04-19 15:20:27.993 +05:30 [INF] Executing OkObjectResult, writing value of type 'StocksApi.DTO.AuthenticationResponse'.
+2025-04-19 15:20:27.995 +05:30 [INF] Executed action StocksApi.Controllers.AccountController.PostLogin (StocksApi) in 209.861ms
+2025-04-19 15:20:27.997 +05:30 [INF] Executed endpoint 'StocksApi.Controllers.AccountController.PostLogin (StocksApi)'
+2025-04-19 15:20:27.999 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7129/api/Account/login - 200 null application/json; charset=utf-8 239.8019ms
